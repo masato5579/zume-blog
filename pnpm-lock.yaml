@@ -23,6 +23,9 @@ importers:
       astro:
         specifier: ^5.4.2
         version: 5.4.2(rollup@4.35.0)(typescript@5.8.2)
+      wrangler:
+        specifier: ^3.114.0
+        version: 3.114.0(@cloudflare/workers-types@4.20250303.0)
 
 packages:
 
