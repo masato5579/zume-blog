@@ -5,10 +5,6 @@ import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
   site: process.env.SITE_URL || 'http://localhost:4321',
-  integrations: [mdx(), sitemap()],
-  adapter: cloudflare({
-    platformProxy: {
-      enabled: true
-    }
-  }),
+  integrations: [mdx(), sitemap(), cloudflare()],
+  adapter: cloudflare(),
 });
