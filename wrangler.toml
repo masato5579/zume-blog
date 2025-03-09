@@ -1,0 +1,2 @@
+name = "zume-blog"
+main = "./dist/server/entry.mjs"  # Astroのビルド出力に合わせて調整
