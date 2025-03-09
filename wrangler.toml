@@ -1,2 +1,4 @@
 name = "zume-blog"
 main = "./dist/_worker.js"  # Astroのビルド出力に合わせて調整
+
+compatibility_date = "2025-03-09"
