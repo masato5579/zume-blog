@@ -1,19 +1,23 @@
 ---
-import { getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import BlogPost from "../../layouts/BlogPost.astro";
+import { getBlogs, getBlogDetail } from "../../library/microcms";
 
+// 詳細記事ページの全パスを取得
 export async function getStaticPaths() {
-	const blogEntries = await getCollection('blog');
-	return blogEntries.map((entry) => ({
-		params: { slug: entry.slug },
-		props: { entry },
-	}));
+  const response = await getBlogs({ fields: ["id"] });
+  return response.contents.map((content: any) => ({
+    params: {
+      slug: content.id,
+    },
+  }));
 }
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+// 記事の詳細情報を取得
+const { slug } = Astro.params;
+const entry = await getBlogDetail(slug);
+
 ---
 
-<BlogPost {...entry.data}>
-	<Content />
+<BlogPost {...entry}>
+  <div set:html={entry.content} />
 </BlogPost>
